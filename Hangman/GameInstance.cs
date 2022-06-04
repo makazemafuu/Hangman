@@ -8,6 +8,7 @@ namespace Hangman
 {
     public class GameInstance
     {
+
         private int healthPlayer { get; set; }
         //deux listes pour définir si nos caractères sont correctes ou incorrectes selon le mot
         //get = lecture & set = écriture
@@ -29,7 +30,7 @@ namespace Hangman
         private Random rnd;
 
         //on définit si le joueur à gagné ou non dans notre programm
-        private bool playerWins { get; set; }
+        public bool playerWins = true;
 
         //variable temporaire permettant de travailler sur les lettres que l'utilisateur à actuellement trouvé
         private string currentWordGuessed;
@@ -66,12 +67,6 @@ namespace Hangman
             healthPlayer = WordToGuess.Length + 5;
             this.healthPlayer = healthPlayer;
 
-            //Console.WriteLine("The word to guess contains {0} letters", WordToGuess.Length);
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"The word to guess contains {WordToGuess.Length} letters");
-            Console.ResetColor();
-
-            currentWordGuessed = PrintWordToGuess(); //commme ça dès le début ça montre les "_"
         }
 
         //mettre List<Words> word en premier permet à l'utilisateur de ne pas saisir le nb d'erreurs
@@ -95,20 +90,21 @@ namespace Hangman
             healthPlayer = WordToGuess.Length + 5;
             this.healthPlayer = healthPlayer;
 
-            //Console.WriteLine("The word to guess contains {0} letters", WordToGuess.Length);
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"The word to guess contains {WordToGuess.Length} letters");
-            Console.ResetColor();
-
-            currentWordGuessed = PrintWordToGuess();
         }
         public void Play()
         {
             //demander à l'utilisateur de saisir une lettre
             //de base lorsqu'on définit pas de valeur pour un bool, il est par définition à l'état "false"
 
-            while (!playerWins)
+            while (playerWins)
+
             {
+
+                //Console.WriteLine("The word to guess contains {0} letters", WordToGuess.Length);
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"The word to guess contains {WordToGuess.Length} letters");
+                Console.ResetColor();
+
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Type in a letter :");
                 Console.ResetColor();
@@ -125,6 +121,8 @@ namespace Hangman
                 //condition lorsqu'on a trouvé la lettre et lorsque non
                 //mettre le debug ici car sinon ça ne précise pas quand la lettre n'est pas bonne le -1
                 //Console.WriteLine($"[DEBUG] letterIndex : {letterIndex}");
+
+                currentWordGuessed = PrintWordToGuess();
 
                 if (letterIndex != -1)
                 {
@@ -166,7 +164,17 @@ namespace Hangman
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Congratulations ! You've won the game !");
                     Console.ResetColor();
-                    Console.ReadKey(true); //pour pas que le programme se ferme tout de suite mais une fois qu'on appuie sur une touche
+
+                    //continue;
+
+                    Console.WriteLine("Would you like to play again ? (press y to continue and any key to quit)");
+                    string strStay = Console.ReadLine();
+
+                    if (strStay != "y")
+                        playerWins = false;
+
+                    //Console.ReadKey(true); //pour pas que le programme se ferme tout de suite mais une fois qu'on appuie sur une touche
+
                 }
 
                 //condition quand on a perdu
@@ -175,10 +183,19 @@ namespace Hangman
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Oh no... you've lost the game !");
                     Console.ResetColor();
-                    Console.ReadKey(true);
-                    break; //pour annulé la boucle, puisque la condition se base uniquement sur la variable playerWins
-                }
+                    //Console.ReadKey(true);
 
+                    //continue;
+                    //break; //pour annulé la boucle, puisque la condition se base uniquement sur la variable playerWins
+
+                    Console.WriteLine("Would you like to play again ? (press y to continue and any key to quit)");
+                    string strStay = Console.ReadLine();
+
+                    if (strStay != "y")
+                        playerWins = false;
+
+
+                }
 
             }
 
