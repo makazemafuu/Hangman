@@ -63,7 +63,7 @@ namespace Hangman
             WordToGuess = Word[rnd.Next(0, Word.Count)];
             //on initialise notre propriété - par convention pour les variables privées on utilise une minuscule et une majuscule pour les variables publiques
             //ici, deux variables ont le même nom mais comme cette propriété appartient à la classe GameInstance "this." signifie que c'est la propriété de CET objet et non d'un autre
-            healthPlayer = WordToGuess.Length + 2;
+            healthPlayer = WordToGuess.Length + 5;
             this.healthPlayer = healthPlayer;
 
             //Console.WriteLine("The word to guess contains {0} letters", WordToGuess.Length);
@@ -92,7 +92,7 @@ namespace Hangman
 
             //on initialise notre propriété - par convention pour les variables privées on utilise une minuscule et une majuscule pour les variables publiques
             //ici, deux variables ont le même nom mais comme cette propriété appartient à la classe GameInstance "this." signifie que c'est la propriété de CET objet et non d'un autre
-            healthPlayer = WordToGuess.Length + 2;
+            healthPlayer = WordToGuess.Length + 5;
             this.healthPlayer = healthPlayer;
 
             //Console.WriteLine("The word to guess contains {0} letters", WordToGuess.Length);
@@ -134,7 +134,7 @@ namespace Hangman
                     playerGuesses.Add(letter); //pour bien ajouter qu'on a trouvé la lettre
                     Console.ResetColor();
                     Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("Health :" + healthPlayer + "/{0}", WordToGuess.Length + 2);
+                    Console.WriteLine("Health :" + healthPlayer + "/{0}", WordToGuess.Length + 5);
                     Console.ResetColor();
 
                 }
@@ -147,7 +147,7 @@ namespace Hangman
                     Console.ResetColor();
                     healthPlayer--;
                     Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("Health :" + healthPlayer + "/{0}", WordToGuess.Length + 2);
+                    Console.WriteLine("Health :" + healthPlayer + "/{0}", WordToGuess.Length + 5);
                     Console.ResetColor();
                 }
 
