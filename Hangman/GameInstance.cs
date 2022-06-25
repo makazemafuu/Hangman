@@ -9,7 +9,8 @@ namespace Hangman
     public class GameInstance
     {
 
-        private int healthPlayer { get; set; }
+        private int healthPlayer;
+
         //deux listes pour définir si nos caractères sont correctes ou incorrectes selon le mot
         //get = lecture & set = écriture
 
