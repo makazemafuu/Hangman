@@ -9,7 +9,7 @@ namespace Hangman
     public class GameInstance
     {
 
-        private int healthPlayer;
+        private int healthPlayer { get; set; }
 
         //deux listes pour définir si nos caractères sont correctes ou incorrectes selon le mot
         //get = lecture & set = écriture
@@ -23,10 +23,10 @@ namespace Hangman
         // a property is a combination of a variable and a method (here : get & set)
         //private and public variables are case sensitive (private string name; / public string Name)
         //more info : https://www.w3schools.com/cs/cs_properties.php
-        public List<char> playerGuesses { get; set; }
+        public List<char> playerGuesses { get; }
 
         //notre programme va piocher dans notre liste de mot aléatoirement pour faire deviner le joueur
-        public List<char> playerMisses { get; set; }
+        public List<char> playerMisses { get; }
         public List<Words> Word { get; }
         public Words WordToGuess { get; }
 
@@ -34,7 +34,7 @@ namespace Hangman
         private Random rnd;
 
         //on définit si le joueur à gagné ou non dans notre programm
-        public bool playerWins = true;
+        private bool playerWins { get; set; }
 
         //variable temporaire permettant de travailler sur les lettres que l'utilisateur à actuellement trouvé
         private string currentWordGuessed;
@@ -110,7 +110,7 @@ namespace Hangman
             //demander à l'utilisateur de saisir une lettre
             //de base lorsqu'on définit pas de valeur pour un bool, il est par définition à l'état "false"
 
-            while (playerWins)
+            while (!playerWins)
 
             {
 
@@ -180,8 +180,6 @@ namespace Hangman
 
                     if (strStay != "y")
                         playerWins = false;*/
-
-                    break;
 
                 }
 
