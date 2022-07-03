@@ -9,10 +9,13 @@ namespace Hangman
     public class GameInstance
     {
 
-        private int healthPlayer; 
+        private int healthPlayer;
 
         //deux listes pour définir si nos caractères sont correctes ou incorrectes selon le mot
         //get = lecture & set = écriture
+        //init; existe aussi : This proposal adds the concept of init only properties and indexers to C#.
+        //These properties and indexers can be set at the point of object creation but become effectively get only once object creation has completed.
+        //This allows for a much more flexible immutable model in C#.
 
         //lesson : get & set : encapsulation : to make sure that "sensitive" data is hidden from users, to do this you should declare variables/fields as private
         //then provide public get and set methods, through properties, to access and update the value of a private field
@@ -23,7 +26,7 @@ namespace Hangman
         public List<char> playerGuesses { get; set; }
 
         //notre programme va piocher dans notre liste de mot aléatoirement pour faire deviner le joueur
-        public List<char> playerMisses { get; init; }
+        public List<char> playerMisses { get; set; }
         public List<Words> Word { get; }
         public Words WordToGuess { get; }
 
