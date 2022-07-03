@@ -9,7 +9,7 @@ namespace Hangman
     public class GameInstance
     {
 
-        private int healthPlayer; 
+        private int healthPlayer { get; set; } 
 
         //deux listes pour définir si nos caractères sont correctes ou incorrectes selon le mot
         //get = lecture & set = écriture
@@ -20,10 +20,10 @@ namespace Hangman
         // a property is a combination of a variable and a method (here : get & set)
         //private and public variables are case sensitive (private string name; / public string Name)
         //more info : https://www.w3schools.com/cs/cs_properties.php
-        public List<char> playerGuesses { get; }
+        public List<char> playerGuesses { get; set; }
 
         //notre programme va piocher dans notre liste de mot aléatoirement pour faire deviner le joueur
-        public List<char> playerMisses { get; }
+        public List<char> playerMisses { get; set; }
         public List<Words> Word { get; }
         public Words WordToGuess { get; }
 
@@ -68,6 +68,11 @@ namespace Hangman
             healthPlayer = WordToGuess.Length + 5;
             this.healthPlayer = healthPlayer;
 
+            //Console.WriteLine("The word to guess contains {0} letters", WordToGuess.Length);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"The word to guess contains {WordToGuess.Length} letters");
+            Console.ResetColor();
+
         }
 
         //mettre List<Words> word en premier permet à l'utilisateur de ne pas saisir le nb d'erreurs
@@ -91,6 +96,11 @@ namespace Hangman
             healthPlayer = WordToGuess.Length + 5;
             this.healthPlayer = healthPlayer;
 
+            //Console.WriteLine("The word to guess contains {0} letters", WordToGuess.Length);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"The word to guess contains {WordToGuess.Length} letters");
+            Console.ResetColor();
+
         }
         public void Play()
         {
@@ -100,11 +110,6 @@ namespace Hangman
             while (playerWins)
 
             {
-
-                //Console.WriteLine("The word to guess contains {0} letters", WordToGuess.Length);
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine($"The word to guess contains {WordToGuess.Length} letters");
-                Console.ResetColor();
 
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Type in a letter :");
@@ -166,15 +171,13 @@ namespace Hangman
                     Console.WriteLine("Congratulations ! You've won the game !");
                     Console.ResetColor();
 
-                    //continue;
-
-                    Console.WriteLine("Would you like to play again ? (press y to continue and any key to quit)");
+                    /*Console.WriteLine("Would you like to play again ? (press y to continue and any key to quit)");
                     string strStay = Console.ReadLine();
 
                     if (strStay != "y")
-                        playerWins = false;
+                        playerWins = false;*/
 
-                    //Console.ReadKey(true); //pour pas que le programme se ferme tout de suite mais une fois qu'on appuie sur une touche
+                    Console.ReadKey(true); //pour pas que le programme se ferme tout de suite mais une fois qu'on appuie sur une touche
 
                 }
 
@@ -184,17 +187,16 @@ namespace Hangman
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Oh no... you've lost the game !");
                     Console.ResetColor();
-                    //Console.ReadKey(true);
+                    Console.ReadKey(true);
 
-                    //continue;
-                    //break; //pour annulé la boucle, puisque la condition se base uniquement sur la variable playerWins
 
-                    Console.WriteLine("Would you like to play again ? (press y to continue and any key to quit)");
+                    /*Console.WriteLine("Would you like to play again ? (press y to continue and any key to quit)");
                     string strStay = Console.ReadLine();
 
                     if (strStay != "y")
                         playerWins = false;
 
+                    break; //pour annulé la boucle, puisque la condition se base uniquement sur la variable playerWins*/
 
                 }
 
