@@ -9,7 +9,7 @@ namespace Hangman
     public class GameInstance
     {
 
-        private int healthPlayer { get; set; } 
+        private int healthPlayer; 
 
         //deux listes pour définir si nos caractères sont correctes ou incorrectes selon le mot
         //get = lecture & set = écriture
@@ -23,7 +23,7 @@ namespace Hangman
         public List<char> playerGuesses { get; set; }
 
         //notre programme va piocher dans notre liste de mot aléatoirement pour faire deviner le joueur
-        public List<char> playerMisses { get; set; }
+        public List<char> playerMisses { get; init; }
         public List<Words> Word { get; }
         public Words WordToGuess { get; }
 
@@ -170,6 +170,7 @@ namespace Hangman
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Congratulations ! You've won the game !");
                     Console.ResetColor();
+                    Console.ReadKey(true); //pour pas que le programme se ferme tout de suite mais une fois qu'on appuie sur une touche
 
                     /*Console.WriteLine("Would you like to play again ? (press y to continue and any key to quit)");
                     string strStay = Console.ReadLine();
@@ -177,7 +178,7 @@ namespace Hangman
                     if (strStay != "y")
                         playerWins = false;*/
 
-                    Console.ReadKey(true); //pour pas que le programme se ferme tout de suite mais une fois qu'on appuie sur une touche
+                    break;
 
                 }
 
@@ -194,9 +195,9 @@ namespace Hangman
                     string strStay = Console.ReadLine();
 
                     if (strStay != "y")
-                        playerWins = false;
+                        playerWins = false;*/
 
-                    break; //pour annulé la boucle, puisque la condition se base uniquement sur la variable playerWins*/
+                    break; //pour annulé la boucle, puisque la condition se base uniquement sur la variable playerWins
 
                 }
 
