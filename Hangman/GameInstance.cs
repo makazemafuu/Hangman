@@ -207,6 +207,7 @@ namespace Hangman
             }
 
         }
+
         private string PrintWordToGuess()
         {
             string currentWordGuessed = ""; //retourne une chaîne de caractère
