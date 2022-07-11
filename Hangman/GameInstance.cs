@@ -16,13 +16,6 @@ namespace Hangman
         //init; existe aussi : This proposal adds the concept of init only properties and indexers to C#.
         //These properties and indexers can be set at the point of object creation but become effectively get only once object creation has completed.
         //This allows for a much more flexible immutable model in C#.
-
-        //lesson : get & set : encapsulation : to make sure that "sensitive" data is hidden from users, to do this you should declare variables/fields as private
-        //then provide public get and set methods, through properties, to access and update the value of a private field
-        //private variables can only be accessed within the same class; however, sometimes we need to access them, which can be done thanks to properties
-        // a property is a combination of a variable and a method (here : get & set)
-        //private and public variables are case sensitive (private string name; / public string Name)
-        //more info : https://www.w3schools.com/cs/cs_properties.php
         public List<char> playerGuesses { get; }
 
         //notre programme va piocher dans notre liste de mot aléatoirement pour faire deviner le joueur
