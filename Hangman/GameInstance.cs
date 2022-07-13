@@ -21,7 +21,7 @@ namespace Hangman
         //notre programme va piocher dans notre liste de mot aléatoirement pour faire deviner le joueur
         public List<char> playerMisses { get; }
         public List<Words> Word { get; }
-        public Words WordToGuess { get; }
+        public Words WordToGuess { get; set; }
 
         //privé car on ne veut cette propriété uniquement dans notre GameInstance et non ailleurs
         private Random rnd;
@@ -174,29 +174,37 @@ namespace Hangman
                 if (healthPlayer == 0)
                 {
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Oh no... you've lost the game !");
+                    Console.WriteLine("Oh no... you've lost the game ! The word to guess was : " + WordToGuess.Text);
                     Console.ResetColor();
                     Console.ReadKey(true);
-
-
-                    /*Console.WriteLine("Would you like to play again ? (press y to continue and any key to quit)");
-                    string strStay = Console.ReadLine();
-
-                    if (strStay != "y")
-                        playerWins = false;*/
 
                     break; //pour annulé la boucle, puisque la condition se base uniquement sur la variable playerWins
 
                 }
             }
 
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Would you like to play again ? (press yes to continue and any key to quit)");
+            Console.ResetColor();
             string strStay = Console.ReadLine();
 
-            if (strStay != "yes")
-                playerWins = true;
+            if (strStay == "yes")
+            {
+                playerWins = false;
+                Reset();
+                Play();
+            }
         }
 
+        private void Reset()
+        {
+            playerGuesses.Clear();
+            playerMisses.Clear();
+            rnd = new Random();
+            WordToGuess = Word[rnd.Next(0, Word.Count)];
+            healthPlayer = WordToGuess.Length + 5;
+
+        }
         private string PrintWordToGuess()
         {
             string currentWordGuessed = ""; //retourne une chaîne de caractère
