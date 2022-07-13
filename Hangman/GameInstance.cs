@@ -168,12 +168,6 @@ namespace Hangman
                     Console.ResetColor();
                     Console.ReadKey(true); //pour pas que le programme se ferme tout de suite mais une fois qu'on appuie sur une touche
 
-                    /*Console.WriteLine("Would you like to play again ? (press y to continue and any key to quit)");
-                    string strStay = Console.ReadLine();
-
-                    if (strStay != "y")
-                        playerWins = false;*/
-
                 }
 
                 //condition quand on a perdu
@@ -194,9 +188,13 @@ namespace Hangman
                     break; //pour annulé la boucle, puisque la condition se base uniquement sur la variable playerWins
 
                 }
-
             }
 
+            Console.WriteLine("Would you like to play again ? (press yes to continue and any key to quit)");
+            string strStay = Console.ReadLine();
+
+            if (strStay != "yes")
+                playerWins = true;
         }
 
         private string PrintWordToGuess()
